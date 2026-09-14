@@ -128,6 +128,10 @@ Desenvolver uma aplicação web full stack que conecte artesãos e empreendedore
 
 O projeto busca integrar, em um único produto, as contribuições das diferentes disciplinas do Projeto Integrador, incluindo desenvolvimento web, banco de dados, requisitos, concorrência e Inteligência Artificial.
 
+## Figma
+
+https://www.figma.com/design/NffaSqV403jDgTUersPLO6/Origem?node-id=0-1&p=f&t=TA3HZzhVrlpQHL3w-0
+
 ## Equipe
 
 - Allana
