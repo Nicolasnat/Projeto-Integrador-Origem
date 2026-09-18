@@ -132,6 +132,9 @@ O projeto busca integrar, em um único produto, as contribuições das diferente
 
 https://www.figma.com/design/NffaSqV403jDgTUersPLO6/Origem?node-id=0-1&p=f&t=TA3HZzhVrlpQHL3w-0
 
+## Documentos relacionados ao projeto
+https://github.com/Samara020/Projeto-Integrador-Origem/tree/main/docs
+
 ## Equipe
 
 - Allana
