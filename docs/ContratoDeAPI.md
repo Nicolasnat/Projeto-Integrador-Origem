@@ -357,10 +357,28 @@ Lista o histórico de pedidos realizados pelo comprador autenticado.
 ```json
 {
   "pedidos": [
-    { "id": "ped_501", "status": "PAGO", "valorTotal": 380.00, "criadoEm": "2026-09-03T21:30:00Z" }
+    {
+      "id": "ped_501",
+      "status": "PAGO",
+      "valorTotal": 380.00,
+      "criadoEm": "2026-09-03T21:30:00Z",
+      "itens": [
+        {
+          "produtoId": "prd_201",
+          "nome": "Vaso de Cerâmica Marajoara",
+          "imagemPrincipal": "https://storage.sistemaorigem.com/img1.jpg",
+          "quantidade": 1,
+          "precoUnitario": 380.00
+        }
+      ]
+    }
   ]
 }
 ```
+
+> Lacuna acordada para a tela de histórico e acompanhamento: cada pedido deve
+> trazer os itens comprados (`produtoId`, `nome`, `imagemPrincipal`,
+> `quantidade` e `precoUnitario`).
 
 #### GET /artesao/pedidos
 Lista os pedidos recebidos contendo peças do artesão autenticado.

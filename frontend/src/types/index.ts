@@ -191,6 +191,8 @@ export type PedidoResumo = {
   status: StatusPedido;
   valorTotal: number;
   criadoEm: string;
+  // lacuna: o histórico e o acompanhamento exibem os itens comprados.
+  itens: ItemCarrinho[];
 };
 
 export type RespostaPedidos = {

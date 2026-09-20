@@ -27,6 +27,7 @@ export default function Header() {
       nome: categoria.nome,
     })),
     { href: "/catalogo", nome: "Todas as peças" },
+    { href: "/conta", nome: "Visualizar compras" },
   ];
 
   return (
@@ -55,7 +56,11 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-10 items-center text-apoio text-tinta hover:text-terracota"
+                  className={`inline-flex min-h-10 items-center text-apoio hover:text-terracota ${
+                    link.href === "/conta"
+                      ? "font-bold text-terracota"
+                      : "text-tinta"
+                  }`}
                 >
                   {link.nome}
                 </Link>

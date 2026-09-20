@@ -39,6 +39,7 @@ export const pedidosService = {
       status: "AGUARDANDO_PAGAMENTO",
       valorTotal: carrinho.valorTotal + ENVIO_PADRAO.valor,
       criadoEm: new Date().toISOString(),
+      itens: carrinho.itens,
     };
     gravarLocal(CHAVE, [pedido, ...(lerLocal<PedidoResumo[]>(CHAVE) ?? [])]);
     return {
@@ -50,6 +51,11 @@ export const pedidosService = {
 
   // GET /comprador/pedidos
   async listar(): Promise<RespostaPedidos> {
-    return { pedidos: lerLocal<PedidoResumo[]>(CHAVE) ?? [] };
+    return {
+      pedidos: (lerLocal<PedidoResumo[]>(CHAVE) ?? []).map((pedido) => ({
+        ...pedido,
+        itens: pedido.itens ?? [],
+      })),
+    };
   },
 };
