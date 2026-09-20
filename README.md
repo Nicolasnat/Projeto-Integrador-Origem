@@ -132,6 +132,16 @@ O projeto busca integrar, em um único produto, as contribuições das diferente
 
 https://www.figma.com/design/NffaSqV403jDgTUersPLO6/Origem?node-id=0-1&p=f&t=TA3HZzhVrlpQHL3w-0
 
+## Desenvolvimento
+
+Antes de codar, dê `git pull` e leia, nesta ordem:
+
+1. [`AGENTS.md`](AGENTS.md): mapa do repositório, branches e padrão de commit.
+2. [`frontend/AGENTS.md`](frontend/AGENTS.md): arquitetura do frontend, Fake API, rotas e estados de tela.
+3. [`frontend/DESIGN.md`](frontend/DESIGN.md): tokens, componentes e lista do que nunca usar.
+
+Branch principal: `main`.
+
 ## Documentos relacionados ao projeto
 https://github.com/Samara020/Projeto-Integrador-Origem/tree/main/docs
 
