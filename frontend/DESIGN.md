@@ -35,7 +35,8 @@ Os tokens vivem em `src/app/globals.css`, dentro de `@theme` (Tailwind 4). Cada 
 | `tinta-2` | `#5A4F44` | Texto de apoio, parágrafo |
 | `tinta-3` | `#71685E` | Legenda, metadado (autor, região) |
 | `tinta-4` | `#A09485` | Só placeholder de campo |
-| `terracota` | `#8B2500` | Botão principal, link, preço em destaque, item "Ofertas" |
+| `terracota` | `#8B2500` | Botão principal, link, preço em destaque |
+| `terracota-escura` | `#6F1E00` | Hover do botão principal e do link |
 | `selo` | `#174C3C` | Fundo do selo "Autêntico", sucesso |
 | `selo-ponto` | `#5DD6A0` | Ponto do selo "Autêntico" |
 | `erro` | `#C32822` | Mensagem e borda de erro |
@@ -99,7 +100,7 @@ Pontos de quebra do Tailwind: `sm` 640, `md` 768, `lg` 1024, `xl` 1280. Componen
 - **Faixa de categorias:** em linha a partir de `md`. Abaixo disso, rolagem horizontal com `scroll-snap`.
 - **Grade de produtos:** 2 colunas, 3 em `md`, 4 em `lg`.
 - **Catálogo:** filtros em coluna lateral a partir de `lg`. Abaixo disso, botão "Filtrar" abre `Drawer`.
-- **Detalhes do produto:** galeria e informações lado a lado a partir de `md`. Abaixo disso empilha, com o botão de compra fixo no pé da tela.
+- **Detalhes do produto:** galeria e informações lado a lado a partir de `md`. Abaixo disso empilha: foto, miniaturas, informações e botões de compra.
 - **Login e Cadastro:** painel do formulário mais imagem a partir de `lg`. Abaixo disso, só o formulário.
 - Área de toque mínima: 40 px por 40 px (o botão de ícone do Figma tem 36).
 - Nada de rolagem horizontal na página em 360 px.
@@ -114,10 +115,10 @@ Pontos de quebra do Tailwind: `sm` 640, `md` 768, `lg` 1024, `xl` 1280. Componen
 
 Ficam em `src/components/ui/`. Antes de criar um, procure se já existe.
 
-- **Botao:** variantes `primario` (fundo `terracota`, texto branco), `secundario` (borda `borda-forte`, texto `tinta-2`), `fantasma` (só texto `terracota`). Altura 44 px, texto `apoio` 700. Estado `carregando` desabilita e mostra progresso. Foco visível sempre.
-- **Campo:** rótulo em cima (`apoio` 700, `tinta`), caixa de 44 px, fundo `superficie`, borda `borda`. Erro: borda `erro` e mensagem embaixo em texto.
+- **Botao e BotaoLink:** variantes `primario` (fundo `terracota`, texto branco), `secundario` (borda `borda-forte`, texto `tinta-2`), `contorno` (borda e texto `terracota`), `fantasma` (só texto `terracota`). Altura 44 px, texto `apoio` 700. Estado `carregando` desabilita e mostra progresso. Foco visível sempre.
+- **Campo e Selecao:** rótulo em cima (`apoio` 700, `tinta`), caixa de 44 px, fundo `superficie`, borda `borda`. Erro: borda `erro` e mensagem embaixo em texto. O espaço da mensagem fica sempre reservado: se a mensagem aparece e some, o botão de enviar se mexe e o clique se perde. Em filtro, use `compacto`.
 - **Selo:** pílula. `autentico` (fundo `selo`, ponto `selo-ponto`, texto `superficie`). `neutro` (fundo `superficie-2`, texto `tinta-2`).
-- **ProdutoCard:** foto em proporção fixa (3:2), nome (`h3`), autor e região (`legenda`, `tinta-3`), "a partir de" mais preço, botão de carrinho. O card inteiro leva ao produto. O botão de carrinho não navega.
+- **ProdutoCard:** foto em proporção fixa (3:2), nome (`h3`), autor e região (`legenda`, `tinta-3`), preço, botão de carrinho. Peça reservada ou vendida ganha selo e o botão fica desabilitado. O card inteiro leva ao produto. O botão de carrinho não navega.
 - **Esqueleto, EstadoVazio, EstadoErro:** usados em toda tela com dado. Referência: frames "Estado de carregamento", "Estado vazio" e "Erro 500".
 
 ## Imagem
@@ -135,7 +136,7 @@ Tamanho 20 px na navegação, 16 px dentro de botão e campo. Botão só com íc
 
 ## Logo
 
-- Arquivo em `assets/LogoOrigem.png`. No header, 150 px de largura (versão reduzida, conforme o Figma).
+- Arquivo em `public/marca/logo-origem.webp` (600 px, exportado do Figma). No header, 56 px de altura (versão reduzida, conforme o Figma).
 - A composição completa, com ornamentos, nunca abaixo de 180 px de largura.
 - Não recolorir, não distorcer, não aplicar sombra, brilho nem gradiente. Área de respiro igual à altura da estrela do "O".
 
