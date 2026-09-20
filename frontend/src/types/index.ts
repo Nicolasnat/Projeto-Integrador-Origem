@@ -173,6 +173,13 @@ export type EnderecoEntrega = {
   numero: string;
 };
 
+export type OpcaoEnvio = {
+  id: string;
+  nome: string;
+  prazo: string;
+  valor: number;
+};
+
 export type PedidoCriado = {
   pedidoId: string;
   status: StatusPedido;
@@ -188,6 +195,22 @@ export type PedidoResumo = {
 
 export type RespostaPedidos = {
   pedidos: PedidoResumo[];
+};
+
+// Pagamentos
+
+export type MetodoPagamento = "CARTAO_CREDITO" | "PIX" | "BOLETO";
+
+export type DadosPagamento = {
+  pedidoId: string;
+  metodoPagamento: MetodoPagamento;
+  tokenCartao: string | null;
+};
+
+export type PagamentoProcessado = {
+  transacaoId: string;
+  status: "APROVADO" | "RECUSADO";
+  dataPagamento: string;
 };
 
 // Indicadores da vitrine (lacuna: GET /indicadores)

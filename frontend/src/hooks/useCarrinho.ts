@@ -6,11 +6,17 @@ import { CARRINHO_VAZIO, carrinhoStore } from "@/store/carrinho";
 import type { ProdutoResumo } from "@/types";
 
 let carregado = false;
+let carregamento: Promise<void> | null = null;
 
-async function carregarUmaVez() {
-  if (carregado) return;
-  carregado = true;
-  carrinhoStore.definir(await carrinhoService.obter());
+function carregarUmaVez(): Promise<void> {
+  if (carregado) return Promise.resolve();
+  if (carregamento) return carregamento;
+
+  carregamento = carrinhoService.obter().then((carrinho) => {
+    carregado = true;
+    carrinhoStore.definir(carrinho);
+  });
+  return carregamento;
 }
 
 export function useCarrinho() {
@@ -26,6 +32,7 @@ export function useCarrinho() {
 
   return {
     carrinho,
+    carregando: !carregado,
     totalItens: carrinho.itens.reduce((n, item) => n + item.quantidade, 0),
 
     async adicionar(produto: ProdutoResumo, quantidade = 1) {
@@ -42,6 +49,10 @@ export function useCarrinho() {
 
     async remover(produtoId: string) {
       carrinhoStore.definir(await carrinhoService.remover(produtoId));
+    },
+
+    async esvaziar() {
+      carrinhoStore.definir(await carrinhoService.esvaziar());
     },
   };
 }

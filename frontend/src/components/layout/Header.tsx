@@ -69,10 +69,8 @@ export default function Header() {
             <BuscaForm id="busca-header" />
           </div>
 
-          {/* prefetch desligado até a página /carrinho existir: tire quando ela entrar. */}
           <Link
             href="/carrinho"
-            prefetch={false}
             className={BOTAO_ICONE}
             aria-label={
               totalItens > 0

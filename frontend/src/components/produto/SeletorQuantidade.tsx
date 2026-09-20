@@ -7,10 +7,12 @@ export function SeletorQuantidade({
   valor,
   maximo,
   aoMudar,
+  desabilitado = false,
 }: {
   valor: number;
   maximo: number;
   aoMudar: (valor: number) => void;
+  desabilitado?: boolean;
 }) {
   return (
     <div
@@ -22,7 +24,7 @@ export function SeletorQuantidade({
         type="button"
         className={BOTAO}
         onClick={() => aoMudar(valor - 1)}
-        disabled={valor <= 1}
+        disabled={desabilitado || valor <= 1}
         aria-label="Diminuir quantidade"
       >
         <Minus className="size-4" aria-hidden="true" />
@@ -37,7 +39,7 @@ export function SeletorQuantidade({
         type="button"
         className={BOTAO}
         onClick={() => aoMudar(valor + 1)}
-        disabled={valor >= maximo}
+        disabled={desabilitado || valor >= maximo}
         aria-label="Aumentar quantidade"
       >
         <Plus className="size-4" aria-hidden="true" />

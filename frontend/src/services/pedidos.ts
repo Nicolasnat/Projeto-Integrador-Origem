@@ -5,14 +5,25 @@ import { ApiError } from "@/lib/http";
 import { carrinhoService } from "@/services/carrinho";
 import type {
   EnderecoEntrega,
+  OpcaoEnvio,
   PedidoCriado,
   PedidoResumo,
   RespostaPedidos,
 } from "@/types";
 
 const CHAVE = "pedidos";
+const ENVIO_PADRAO: OpcaoEnvio = {
+  id: "economico",
+  nome: "Econômico",
+  prazo: "7 a 10 dias úteis",
+  valor: 18,
+};
 
 export const pedidosService = {
+  opcaoEnvioPadrao(): OpcaoEnvio {
+    return ENVIO_PADRAO;
+  },
+
   // POST /pedidos/checkout
   async checkout(endereco: EnderecoEntrega): Promise<PedidoCriado> {
     const carrinho = await carrinhoService.obter();
@@ -26,12 +37,10 @@ export const pedidosService = {
     const pedido: PedidoResumo = {
       id: `ped_${Date.now().toString().slice(-6)}`,
       status: "AGUARDANDO_PAGAMENTO",
-      valorTotal: carrinho.valorTotal,
+      valorTotal: carrinho.valorTotal + ENVIO_PADRAO.valor,
       criadoEm: new Date().toISOString(),
     };
     gravarLocal(CHAVE, [pedido, ...(lerLocal<PedidoResumo[]>(CHAVE) ?? [])]);
-    await carrinhoService.esvaziar();
-
     return {
       pedidoId: pedido.id,
       status: pedido.status,
