@@ -143,7 +143,12 @@ Antes de codar, dê `git pull` e leia, nesta ordem:
 Branch principal: `main`.
 
 ## Documentos relacionados ao projeto
+
 https://github.com/Samara020/Projeto-Integrador-Origem/tree/main/docs
+
+## Concorrência 
+
+https://github.com/Samara020/Projeto-Integrador-Origem/tree/backend
 
 ## Equipe
 
