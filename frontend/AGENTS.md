@@ -127,8 +127,14 @@ O contrato ainda não tem, e a Avaliação 1 pede:
 - `GET /categorias`, `GET /tecnicas`, `GET /regioes`.
 - `GET /produtos/{id}/avaliacoes`.
 - Filtros `tecnica` e `regiao` em `GET /produtos` (hoje só `termo`, `categoria`, `origem`).
-- Formato do corpo de erro.
-- Campos de detalhe do produto: descrição, técnica, região, estoque, galeria de imagens.
+- `GET /indicadores` (números da vitrine: artesãos, peças, nota média).
+- Formato do corpo de erro. A Fake API usa `{ "mensagem": "..." }`.
+- Campos de detalhe do produto: descrição, técnica, região, estoque, galeria de imagens, disponibilidade, total de avaliações.
+- Região e disponibilidade no item de `GET /produtos` (o card mostra os dois).
+- `nome` e `imagemPrincipal` no item de `GET /carrinho`.
+- `tecnica` e `regiao` em `POST /auth/register` para artesão. O Figma também pede CPF/CNPJ e localização: o front ainda não coleta, porque o contrato não recebe.
+
+Os campos marcados com "lacuna" em `src/types/index.ts` são exatamente estes.
 
 Se faltar campo para a sua tela: proponha a mudança em `../docs/ContratoDeAPI.md` no mesmo PR. Não invente campo só no front.
 
