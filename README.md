@@ -155,6 +155,16 @@ Confirmar pedido
 - Alerta de estoque baixo
 - Estado de carregamento
 
+## Futura integração com o backend
+
+A Fake API será utilizada inicialmente para permitir o desenvolvimento e validação do frontend. Na etapa de integração, os endpoints simulados serão substituídos pelos endpoints do backend real, mantendo os mesmos contratos de requisição e resposta sempre que possível.
+
+A integração seguirá o fluxo:
+
+**Frontend → API real → Backend → Banco de dados PostgreSQL**
+
+As chamadas atualmente direcionadas à Fake API serão ajustadas para a URL da API real, mantendo as telas e fluxos já desenvolvidos. A autenticação, persistência dos dados, estoque, pedidos e demais regras de negócio passarão a ser processados pelo backend.
+
 ## Integração entre disciplinas
 
 O projeto integra as contribuições das disciplinas do 4º semestre:
