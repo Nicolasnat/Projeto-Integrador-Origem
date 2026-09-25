@@ -100,6 +100,61 @@ Adicionar ao carrinho
 Confirmar pedido
 ```
 
+## Fluxos implementados
+
+### Acesso e usuários
+- Login
+- Cadastro
+- Recuperação de senha
+- Perfil do comprador
+- Perfil do artesão e edição
+- Perfil do administrador
+
+### Catálogo e produtos
+- Home e vitrine
+- Catálogo e busca
+- Detalhes do produto
+- Loja do artesão
+- Cadastro de peça
+- Personalização de peça
+- Comparação de peças
+- Recomendações personalizadas
+
+### Compra
+- Carrinho
+- Checkout
+- Pagamento
+- Confirmação de pagamento
+- Pagamento recusado
+- Visualização de compras
+- Acompanhamento do pedido
+
+### Gestão do artesão
+- Dashboard do artesão
+- Gestão de estoque
+- Gestão de pedidos
+- Transporte e embalagem
+- Avaliações
+- Controle de peças únicas: disponível, reservada e vendida
+
+### Administração
+- Dashboard do administrador
+- Validação de origem: pendente, aprovada e rejeitada
+- Moderação de conteúdo
+
+### Suporte e IA
+- Central de suporte
+- Chat com IA para triagem
+- Escalonamento para atendimento humano
+
+### Estados e exceções
+- Estado vazio
+- Erro 500
+- Confirmação
+- Indisponibilidade
+- Alerta de estoque baixo
+- Estado de carregamento
+
 ## Integração entre disciplinas
 
 O projeto integra as contribuições das disciplinas do 4º semestre:
