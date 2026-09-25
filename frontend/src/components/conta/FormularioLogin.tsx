@@ -90,10 +90,8 @@ export function FormularioLogin() {
         erro={erros.senha}
       />
 
-      {/* prefetch desligado até a página /recuperar-senha existir: tire quando ela entrar. */}
       <Link
         href="/recuperar-senha"
-        prefetch={false}
         className="inline-flex min-h-10 items-center self-end text-apoio text-terracota hover:underline"
       >
         Esqueci minha senha

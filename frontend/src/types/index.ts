@@ -254,3 +254,15 @@ export type MetricasAdmin = {
   usuariosRecentes: { nome: string; papel: string }[];
   atividadesRecentes: string[];
 };
+
+// Recuperação de senha (HU-01): POST /auth/recuperar-senha
+
+export type DadosRecuperarSenha = {
+  email: string;
+};
+
+// lacuna: POST /auth/redefinir-senha com o token que chega por e-mail
+export type DadosRedefinirSenha = {
+  token: string;
+  senha: string;
+};
