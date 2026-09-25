@@ -16,6 +16,8 @@ export type ProdutoMock = {
   disponibilidade: Disponibilidade;
   estoque: number;
   destaque: boolean;
+  dimensoes: string;
+  material: string;
 };
 
 const VASO = "/produtos/vaso-ceramica.jpg";
@@ -40,6 +42,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 1,
     destaque: true,
+    dimensoes: "22 × 14 cm",
+    material: "Barro da Zona da Mata, engobe natural",
   },
   {
     id: "prd_202",
@@ -56,6 +60,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 6,
     destaque: true,
+    dimensoes: "24 × 18 cm",
+    material: "Barro vermelho vazado à faca",
   },
   {
     id: "prd_203",
@@ -72,6 +78,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 9,
     destaque: true,
+    dimensoes: "16 × 9 cm",
+    material: "Umburana com pigmento à base de água",
   },
   {
     id: "prd_204",
@@ -88,6 +96,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 3,
     destaque: true,
+    dimensoes: "1,40 × 0,90 m",
+    material: "Linho cru com linha de algodão",
   },
   {
     id: "prd_205",
@@ -104,6 +114,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 12,
     destaque: false,
+    dimensoes: "18 × 12 cm",
+    material: "Barro do Alto do Moura, pintura a frio",
   },
   {
     id: "prd_206",
@@ -120,6 +132,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "RESERVADO",
     estoque: 1,
     destaque: false,
+    dimensoes: "40 × 22 cm",
+    material: "Cedro maciço",
   },
   {
     id: "prd_207",
@@ -136,6 +150,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 14,
     destaque: false,
+    dimensoes: "33 × 48 cm",
+    material: "Papel de algodão 300 g, tinta gráfica",
   },
   {
     id: "prd_208",
@@ -152,6 +168,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "VENDIDO",
     estoque: 0,
     destaque: false,
+    dimensoes: "33 × 48 cm",
+    material: "Matriz de umburana",
   },
   {
     id: "prd_209",
@@ -168,6 +186,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 80,
     destaque: false,
+    dimensoes: "11 × 16 cm, 16 páginas",
+    material: "Papel jornal, capa em xilogravura",
   },
   {
     id: "prd_210",
@@ -184,6 +204,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 22,
     destaque: false,
+    dimensoes: "Caixa 12 × 18 cm, 6 folhetos",
+    material: "Papel jornal e cartão",
   },
   {
     id: "prd_211",
@@ -200,6 +222,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 2,
     destaque: false,
+    dimensoes: "1,60 × 0,40 m",
+    material: "Algodão branco, bordado richelieu",
   },
   {
     id: "prd_212",
@@ -216,6 +240,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 15,
     destaque: false,
+    dimensoes: "28 × 16 cm, 1,5 L",
+    material: "Barro sem esmalte",
   },
   {
     id: "prd_213",
@@ -232,6 +258,8 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 1,
     destaque: false,
+    dimensoes: "30 × 10 cm",
+    material: "Barro de Tracunhaém, queima única",
   },
   {
     id: "prd_214",
@@ -248,5 +276,7 @@ export const produtos: ProdutoMock[] = [
     disponibilidade: "DISPONIVEL",
     estoque: 4,
     destaque: false,
+    dimensoes: "3 peças de 12 × 8 cm",
+    material: "Umburana com base de cedro",
   },
 ];

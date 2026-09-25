@@ -27,6 +27,8 @@ export default function Header() {
       nome: categoria.nome,
     })),
     { href: "/catalogo", nome: "Todas as peças" },
+    { href: "/recomendacoes", nome: "Para você" },
+    { href: "/comparar", nome: "Comparar" },
     { href: "/conta", nome: "Visualizar compras" },
   ];
 

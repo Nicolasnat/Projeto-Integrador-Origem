@@ -20,6 +20,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/suporte" className="hover:underline">
+                Ajuda
+              </Link>
+            </li>
+            <li>
               <Link href="/entrar" className="hover:underline">
                 Entrar
               </Link>

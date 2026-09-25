@@ -55,6 +55,9 @@ export type ProdutoDetalhe = ProdutoResumo & {
   tecnica: Tecnica;
   estoque: number;
   totalAvaliacoes: number;
+  // lacunas: a comparação mostra dimensões e material
+  dimensoes: string;
+  material: string;
 };
 
 export type OrdenacaoProdutos =
@@ -112,6 +115,9 @@ export type Avaliacao = {
   nota: number;
   comentario: string;
   criadoEm: string;
+  // lacunas: a tela de avaliações mostra compra verificada e a resposta do artesão
+  compraVerificada: boolean;
+  respostaArtesao?: string;
 };
 
 export type RespostaAvaliacoes = {
@@ -265,4 +271,111 @@ export type DadosRecuperarSenha = {
 export type DadosRedefinirSenha = {
   token: string;
   senha: string;
+};
+
+// Avaliação após a compra (HU-19): POST /avaliacoes
+
+export type StatusAvaliacao = "PUBLICADO" | "EM_MODERACAO" | "REMOVIDO";
+
+export type NovaAvaliacao = {
+  pedidoId: string;
+  produtoId: string;
+  nota: number;
+  comentario: string;
+};
+
+export type AvaliacaoCriada = {
+  id: string;
+  status: StatusAvaliacao;
+};
+
+// lacuna: o comprador precisa rever o que já avaliou (GET /comprador/avaliacoes)
+export type MinhaAvaliacao = NovaAvaliacao &
+  AvaliacaoCriada & {
+    criadoEm: string;
+    nomeProduto: string;
+    imagemPrincipal: string;
+  };
+
+// Suporte (HU-22) e triagem inteligente (HU-23): POST e GET /suporte/tickets
+
+export type StatusTicket =
+  | "TRIAGEM_INTELIGENTE"
+  | "ABERTO"
+  | "ESCALADO_HUMANO"
+  | "RESOLVIDO";
+
+export type CategoriaSuporte =
+  | "rastreio"
+  | "produto"
+  | "pedido"
+  | "pagamento"
+  | "troca"
+  | "conta";
+
+export type PrioridadeTicket = "NORMAL" | "ALTA";
+
+export type NovoTicket = {
+  assunto: string;
+  mensagem: string;
+  pedidoId?: string;
+  prioridade?: PrioridadeTicket;
+};
+
+export type TicketCriado = {
+  ticketId: string;
+  status: StatusTicket;
+};
+
+export type AutorMensagem = "COMPRADOR" | "IA" | "ATENDENTE";
+
+export type MensagemTicket = {
+  id: string;
+  autor: AutorMensagem;
+  texto: string;
+  criadoEm: string;
+  // só nas mensagens da assistente: como classificou e o que sugere responder
+  categoria?: CategoriaSuporte;
+  sugestoes?: string[];
+};
+
+// lacuna: o contrato lista só ticketId, assunto e status; o chat precisa das mensagens
+export type Ticket = TicketCriado & {
+  assunto: string;
+  criadoEm: string;
+  pedidoId?: string;
+  prioridade: PrioridadeTicket;
+  categoria?: CategoriaSuporte;
+  mensagens: MensagemTicket[];
+};
+
+export type ArtigoAjuda = {
+  id: string;
+  categoria: CategoriaSuporte;
+  titulo: string;
+  resumo: string;
+  popular: boolean;
+};
+
+// Personalização (HU-24): solicitação enviada ao artesão
+// lacuna: POST /produtos/{id}/personalizacoes
+
+export type NovaPersonalizacao = {
+  produtoId: string;
+  cor: string;
+  tamanho: string;
+  inscricao: string;
+  detalhes: string;
+  mensagem: string;
+};
+
+export type Personalizacao = NovaPersonalizacao & {
+  id: string;
+  status: "ENVIADA" | "RESPONDIDA";
+  criadoEm: string;
+  nomeProduto: string;
+  imagemPrincipal: string;
+  artesaoNome: string;
+  prazoAdicionalDias: number;
+  precoAdicional: number;
 };

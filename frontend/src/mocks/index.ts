@@ -65,6 +65,8 @@ function paraDetalhe(p: ProdutoMock): ProdutoDetalhe {
     tecnica: achar(tecnicas, p.tecnicaId),
     estoque: p.estoque,
     totalAvaliacoes: notasDe(p.id).length,
+    dimensoes: p.dimensoes,
+    material: p.material,
   };
 }
 
