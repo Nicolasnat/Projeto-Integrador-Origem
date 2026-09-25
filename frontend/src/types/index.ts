@@ -223,3 +223,23 @@ export type IndicadoresVitrine = {
   avaliacaoMedia: number;
   totalAvaliacoes: number;
 };
+
+export type MetricasAdmin = {
+  totalUsuarios: number;
+  totalArtesaos: number;
+  volumeTransacionadoGlobal: number;
+  totalVendas: number;
+  variacaoVendas: number;
+  totalArtesaosAtivos: number;
+  novosArtesaosNoMes: number;
+  totalProdutos: number;
+  novosProdutos: number;
+  ticketsSuporte: number;
+  ticketsUrgentes: number;
+  validacoesPendentes: number;
+  vendasPorRegiao: { sigla: string; percentual: number }[];
+  categoriasMaisVendidas: { nome: string; percentual: number }[];
+  denunciasPendentes: number;
+  usuariosRecentes: { nome: string; papel: string }[];
+  atividadesRecentes: string[];
+};
