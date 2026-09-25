@@ -1,9 +1,20 @@
 "use client";
 
 import { Drawer, Portal } from "@chakra-ui/react";
-import { LogOut, Menu, ShoppingCart, User, X } from "lucide-react";
+import {
+  LogOut,
+  Menu,
+  ShieldCheck,
+  ShoppingCart,
+  Store,
+  User,
+  UserRound,
+  X,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BuscaForm } from "@/components/layout/BuscaForm";
 import { Esqueleto } from "@/components/ui/Esqueleto";
@@ -11,15 +22,28 @@ import { useCarrinho } from "@/hooks/useCarrinho";
 import { useCategorias } from "@/hooks/useCatalogo";
 import { useSessao } from "@/hooks/useSessao";
 import { plural } from "@/lib/formato";
+import type { Papel } from "@/types";
 
 const BOTAO_ICONE =
   "relative inline-flex size-10 items-center justify-center rounded-raio text-tinta transition-colors duration-150 hover:bg-superficie-2";
 
+// Cada papel tem uma área diferente: o comprador vive em /conta, o artesão e o
+// administrador em painéis próprios. O destino vem do papel do contrato.
+const AREA_POR_PAPEL: Record<Papel, { href: string; nome: string; icone: LucideIcon }> = {
+  COMPRADOR: { href: "/conta", nome: "Minha conta", icone: UserRound },
+  ARTESAO: { href: "/painel/artesao", nome: "Painel do ateliê", icone: Store },
+  ADMINISTRADOR: { href: "/painel/admin", nome: "Painel administrativo", icone: ShieldCheck },
+};
+
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const pathname = usePathname();
   const categorias = useCategorias();
   const { totalItens } = useCarrinho();
   const { usuario, sair } = useSessao();
+
+  const area = usuario ? AREA_POR_PAPEL[usuario.papel] : null;
+  const IconeArea = area?.icone;
 
   const links = [
     ...(categorias.dados ?? []).map((categoria) => ({
@@ -93,6 +117,17 @@ export default function Header() {
             )}
           </Link>
 
+          {area && IconeArea ? (
+            <Link
+              href={area.href}
+              className={BOTAO_ICONE}
+              aria-label={area.nome}
+              aria-current={pathname === area.href ? "page" : undefined}
+            >
+              <IconeArea className="size-5" aria-hidden="true" />
+            </Link>
+          ) : null}
+
           {usuario ? (
             <button
               type="button"
@@ -142,6 +177,16 @@ export default function Header() {
                     </Drawer.CloseTrigger>
                   </Drawer.Header>
                   <Drawer.Body>
+                    {area && IconeArea ? (
+                      <Link
+                        href={area.href}
+                        onClick={() => setMenuAberto(false)}
+                        className="flex h-12 items-center gap-3 border-b border-tinta text-corpo font-bold text-terracota"
+                      >
+                        <IconeArea className="size-5" aria-hidden="true" />
+                        {area.nome}
+                      </Link>
+                    ) : null}
                     <nav aria-label="Categorias">
                       <ul className="flex flex-col">
                         {links.map((link) => (

@@ -241,6 +241,160 @@ export type IndicadoresVitrine = {
   totalAvaliacoes: number;
 };
 
+// Painel do artesão (lacuna: GET /artesao/painel/metricas)
+
+export type StatusProducao =
+  | "NOVO"
+  | "EM_PRODUCAO"
+  | "PRONTO"
+  | "ENVIADO"
+  | "ENTREGUE"
+  | "CANCELADO";
+
+export type ProximaAcaoPedido =
+  | "ACEITAR"
+  | "MARCAR_PRONTO"
+  | "INFORMAR_RASTREIO"
+  | "VER_RASTREIO"
+  | "NENHUMA";
+
+export type AlertaArtesao = {
+  id: string;
+  quantidade: number;
+  mensagem: string;
+  acao: string;
+  destino: string;
+};
+
+export type PedidoRecente = {
+  id: string;
+  comprador: string;
+  itens: string;
+  valorTotal: number;
+  statusProducao: StatusProducao;
+};
+
+export type MetricasArtesao = {
+  vendasMes: number;
+  variacaoVendas: number;
+  pedidosPendentes: number;
+  pedidosNovos: number;
+  avaliacaoMedia: number;
+  totalAvaliacoes: number;
+  visualizacoes: number;
+  variacaoVisualizacoes: number;
+  produtosAtivos: number;
+  vendasPorDia: { dia: string; valor: number }[];
+  alertas: AlertaArtesao[];
+  pedidosRecentes: PedidoRecente[];
+};
+
+// Gestão de estoque (lacuna: GET /artesao/pecas e PUT /artesao/pecas/{id}/estoque)
+
+export type SituacaoPeca = "ATIVO" | "INATIVO" | "ESGOTADO" | "ESTOQUE_BAIXO";
+
+export type PecaEstoque = {
+  id: string;
+  nome: string;
+  sku: string;
+  imagemPrincipal: string;
+  estoque: number;
+  situacao: SituacaoPeca;
+};
+
+export type PaginacaoPecas = Paginado<PecaEstoque> & {
+  contagem: Record<SituacaoPeca, number>;
+};
+
+export type NovoProduto = {
+  nome: string;
+  descricao: string;
+  categoria: string;
+  tecnica: string;
+  material: string;
+  dimensoes: string;
+  peso: number;
+  origem: string;
+  preco: number;
+  modalidadeProducao: ModalidadeProducao;
+  estoque: number;
+  informacoesOrigem: string;
+  certificado: string;
+  imagens: string[];
+};
+
+export type ProdutoCriado = {
+  id: string;
+  sku: string;
+  statusValidacao: "PENDENTE" | "APROVADA" | "REPROVADA";
+  criadoEm: string;
+};
+
+export type PedidoRecebido = {
+  id: string;
+  criadoEm: string;
+  statusProducao: StatusProducao;
+  comprador: { nome: string; local: string };
+  itens: {
+    produtoId: string;
+    nome: string;
+    quantidade: number;
+    precoUnitario: number;
+  }[];
+  valorTotal: number;
+  proximaAcao: ProximaAcaoPedido;
+  codigoRastreio: string | null;
+};
+
+export type RespostaPedidosRecebidos = {
+  pedidosRecebidos: PedidoRecebido[];
+};
+
+// Perfil do artesão em edição (lacuna: GET /artesao/perfil e PUT /artesao/perfil)
+
+export type PerfilArtesaoEdicao = {
+  nomeArtistico: string;
+  regiao: string;
+  biografia: string;
+  tecnicas: string[];
+  foto: string | null;
+  fotoCapa: string | null;
+  contato: { telefone: string; redesSociais: string };
+  certificacoes: string[];
+  dadosBancarios: string;
+};
+
+export type PerfilArtesaoAtualizado = {
+  nomeArtistico: string;
+  atualizadoEm: string;
+};
+
+// Transporte e embalagem (lacuna: /artesao/envio e /envios/cotacao)
+
+export type OpcaoEnvioConfigurada = {
+  id: string;
+  nome: string;
+  prazo: string;
+  ativa: boolean;
+};
+
+export type ConfiguracoesEnvio = {
+  opcoes: OpcaoEnvioConfigurada[];
+  tiposEmbalagem: Referencia[];
+  prazosPorRegiao: { regiao: string; prazo: string }[];
+};
+
+export type DadosFrete = {
+  cep: string;
+  pesoKg: number;
+  dimensoes: { altura: number; largura: number; profundidade: number };
+};
+
+export type CotacaoFrete = {
+  servico: { id: string; nome: string; prazo: string };
+  valor: number;
+};
+
 export type MetricasAdmin = {
   totalUsuarios: number;
   totalArtesaos: number;

@@ -79,7 +79,12 @@ src/
 | `/suporte` | Central de suporte |
 | `/suporte/chat` | Chat com IA · Triagem (conversa nova) |
 | `/suporte/[id]` | Chat com IA · Triagem, Escalonamento para humano (2 estados) |
-| `/painel/artesao` | Dashboard do artesão, Gestão de estoque, Gestão de pedidos |
+| `/painel/artesao` | Dashboard do artesão |
+| `/painel/artesao/pecas/nova` | Cadastro de peça |
+| `/painel/artesao/estoque` | Gestão de estoque |
+| `/painel/artesao/pedidos` | Gestão de pedidos |
+| `/painel/artesao/perfil` | Perfil do artesão |
+| `/painel/artesao/envio` | Transporte e embalagem |
 | `/painel/admin` | Dashboard administrador |
 
 Busca e filtros vivem na URL: `/catalogo?termo=barro&categoria=ceramica&regiao=agreste&pagina=2`. Assim o link pode ser compartilhado e o botão voltar funciona.
