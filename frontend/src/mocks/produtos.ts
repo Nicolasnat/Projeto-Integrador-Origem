@@ -1,5 +1,5 @@
 // Dados da Fake API. Só src/app/api importa daqui.
-// As duas fotos vieram do Figma e se repetem até a equipe ter foto real de cada peça.
+// As fotos vieram do Figma e se repetem até a equipe ter foto real de cada peça.
 import type { Disponibilidade, ModalidadeProducao } from "@/types";
 
 export type ProdutoMock = {
@@ -20,6 +20,9 @@ export type ProdutoMock = {
 
 const VASO = "/produtos/vaso-ceramica.jpg";
 const PASSARO = "/produtos/passaro-madeira.jpg";
+const PASSARO_ENTALHE = "/produtos/passaro-madeira-entalhe.jpg";
+const LUMINARIA = "/produtos/luminaria-barro.jpg";
+const TOALHA = "/produtos/toalha-bordada.jpg";
 
 export const produtos: ProdutoMock[] = [
   {
@@ -44,7 +47,7 @@ export const produtos: ProdutoMock[] = [
     preco: 120,
     descricao:
       "Cúpula vazada à faca, ainda com o barro úmido. A luz atravessa os recortes e desenha a parede.",
-    imagens: [PASSARO, VASO],
+    imagens: [LUMINARIA, VASO],
     artesaoId: "usr_901",
     categoriaId: "arte-e-decoracao",
     tecnicaId: "ceramica",
@@ -60,7 +63,7 @@ export const produtos: ProdutoMock[] = [
     preco: 70,
     descricao:
       "Entalhado em umburana, madeira leve do sertão. Pintura com pigmento à base de água e acabamento em cera.",
-    imagens: [PASSARO, VASO],
+    imagens: [PASSARO, PASSARO_ENTALHE],
     artesaoId: "usr_903",
     categoriaId: "artesanato",
     tecnicaId: "entalhe-em-madeira",
@@ -76,7 +79,7 @@ export const produtos: ProdutoMock[] = [
     preco: 85,
     descricao:
       "Linho cru com flores em ponto cheio. Cerca de quarenta horas de agulha em cada toalha.",
-    imagens: [VASO],
+    imagens: [TOALHA],
     artesaoId: "usr_902",
     categoriaId: "artesanato",
     tecnicaId: "bordado",
@@ -108,7 +111,7 @@ export const produtos: ProdutoMock[] = [
     preco: 340,
     descricao:
       "Carranca de proa com 40 cm, talhada em cedro. Nas barcas do São Francisco, espantava o mau agouro.",
-    imagens: [PASSARO],
+    imagens: [PASSARO_ENTALHE],
     artesaoId: "usr_903",
     categoriaId: "arte-e-decoracao",
     tecnicaId: "entalhe-em-madeira",
@@ -188,7 +191,7 @@ export const produtos: ProdutoMock[] = [
     preco: 210,
     descricao:
       "Algodão branco recortado e bordado em richelieu, 1,60 m. Feito sob medida em até 20 dias.",
-    imagens: [VASO],
+    imagens: [TOALHA],
     artesaoId: "usr_902",
     categoriaId: "artesanato",
     tecnicaId: "bordado",
@@ -236,7 +239,7 @@ export const produtos: ProdutoMock[] = [
     preco: 150,
     descricao:
       "Carcará, asa-branca e galo-de-campina em umburana. Vendidos juntos, com base de apoio.",
-    imagens: [PASSARO],
+    imagens: [PASSARO_ENTALHE, PASSARO],
     artesaoId: "usr_903",
     categoriaId: "artesanato",
     tecnicaId: "entalhe-em-madeira",

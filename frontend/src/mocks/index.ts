@@ -168,13 +168,29 @@ export function avaliacoesDe(produtoId: string): RespostaAvaliacoes {
 export function perfilDoArtesao(id: string): ArtesaoPerfil | null {
   const artesao = artesaos.find((a) => a.id === id);
   if (!artesao) return null;
+
+  const pecas = produtos.filter((p) => p.artesaoId === id);
+  const notas = pecas.flatMap((p) => notasDe(p.id));
+  const soma = notas.reduce((total, a) => total + a.nota, 0);
+
   return {
     id: artesao.id,
     nome: artesao.nome,
     nomeLoja: artesao.nomeLoja,
     biografia: artesao.biografia,
     regiao: artesao.cidade,
-    produtos: produtos.filter((p) => p.artesaoId === id).map(paraResumo),
+    produtos: pecas.map(paraResumo),
+    foto: artesao.foto,
+    tecnica: achar(tecnicas, artesao.tecnicaId).nome,
+    especialidade: artesao.especialidade,
+    verificado: artesao.verificado,
+    historia: artesao.historia,
+    citacao: artesao.citacao,
+    imagens: artesao.imagens,
+    avaliacaoMedia:
+      notas.length === 0 ? 0 : Math.round((soma / notas.length) * 10) / 10,
+    totalAvaliacoes: notas.length,
+    pecasVendidas: artesao.pecasVendidas,
   };
 }
 

@@ -90,6 +90,17 @@ export type ArtesaoPerfil = {
   biografia: string;
   regiao: string;
   produtos: ProdutoResumo[];
+  // lacunas: a tela "Loja do artesão" mostra foto, técnica, história, avaliações e vendas
+  foto: string | null;
+  tecnica: string;
+  especialidade: string;
+  verificado: boolean;
+  historia: string[];
+  citacao: string;
+  imagens: string[];
+  avaliacaoMedia: number;
+  totalAvaliacoes: number;
+  pecasVendidas: number;
 };
 
 // Avaliações (lacuna: GET /produtos/{id}/avaliacoes)

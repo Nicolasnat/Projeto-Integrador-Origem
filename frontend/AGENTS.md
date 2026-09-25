@@ -132,6 +132,7 @@ O contrato ainda não tem, e a Avaliação 1 pede:
 - Campos de detalhe do produto: descrição, técnica, região, estoque, galeria de imagens, disponibilidade, total de avaliações.
 - Região e disponibilidade no item de `GET /produtos` (o card mostra os dois).
 - `nome` e `imagemPrincipal` no item de `GET /carrinho`.
+- Perfil do artesão (`GET /artesaos/{id}/perfil`): foto, técnica, especialidade, verificado, história, citação, imagens, média e total de avaliações, peças vendidas.
 - `tecnica` e `regiao` em `POST /auth/register` para artesão. O Figma também pede CPF/CNPJ e localização: o front ainda não coleta, porque o contrato não recebe.
 
 Os campos marcados com "lacuna" em `src/types/index.ts` são exatamente estes.

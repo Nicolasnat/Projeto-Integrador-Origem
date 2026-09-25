@@ -193,10 +193,8 @@ export function DetalheProduto({ id }: { id: string }) {
               </p>
               <p className="text-apoio text-tinta-3">
                 por{" "}
-                {/* prefetch desligado até a página /artesao/[id] existir: tire quando ela entrar. */}
                 <Link
                   href={`/artesao/${produto.artesao.id}`}
-                  prefetch={false}
                   className="font-medium text-tinta underline-offset-2 hover:underline"
                 >
                   {produto.artesao.loja}
