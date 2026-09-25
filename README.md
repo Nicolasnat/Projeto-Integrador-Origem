@@ -128,6 +128,25 @@ Desenvolver uma aplicação web full stack que conecte artesãos e empreendedore
 
 O projeto busca integrar, em um único produto, as contribuições das diferentes disciplinas do Projeto Integrador, incluindo desenvolvimento web, banco de dados, requisitos, concorrência e Inteligência Artificial.
 
+## Execução
+
+**Requisitos:** Git, Node.js 20+ e npm. Compatível com Windows, macOS e Linux.
+
+```bash
+git clone https://github.com/Samara020/Projeto-Integrador-Origem.git
+cd Projeto-Integrador-Origem/frontend
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:3000`.
+
+Para validar a compilação:
+
+```bash
+npm run build
+```
+
 ## Figma
 
 https://www.figma.com/design/NffaSqV403jDgTUersPLO6/Origem?node-id=0-1&p=f&t=TA3HZzhVrlpQHL3w-0
