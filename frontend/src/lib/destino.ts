@@ -5,14 +5,14 @@ export const ROTA_PAINEL_ADMIN = "/painel/admin";
 
 const INICIO: Record<Papel, string> = {
   COMPRADOR: "/",
-  // Avaliação 1 ainda não tem o painel do artesão.
-  ARTESAO: "/",
+  ARTESAO: "/painel/artesao",
   ADMINISTRADOR: ROTA_PAINEL_ADMIN,
 };
 
 // Rotas que só um papel abre. `?volta=` para elas vale só para esse papel.
 const RESTRITAS: { prefixo: string; papel: Papel }[] = [
   { prefixo: ROTA_PAINEL_ADMIN, papel: "ADMINISTRADOR" },
+  { prefixo: "/painel/artesao", papel: "ARTESAO" },
 ];
 
 // Aceita só caminho interno ("/x"). "//site", "/\site" e "https://" levariam para fora da Origem.
