@@ -48,6 +48,8 @@ Cadastra um novo usuário no sistema.
 }
 ```
 
+*Proposta do frontend (lacuna):* para `"papel": "ADMINISTRADOR"`, o corpo leva também `"codigoConvite"`, o código que a equipe entrega a quem vai administrar. Sem código válido, a resposta é `403 Forbidden` com `{ "mensagem": "Código de convite inválido." }`. Comprador e artesão não enviam o campo.
+
 #### POST /auth/login
 Autentica o usuário e emite o token de sessão.
 

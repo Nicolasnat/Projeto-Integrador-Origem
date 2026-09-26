@@ -46,3 +46,11 @@ export function tempoRelativo(iso: string): string {
   const dias = Math.round(horas / 24);
   return dias === 1 ? "ontem" : `há ${dias} dias`;
 }
+
+// "Maria Clara Souza" vira "MS". Usado no avatar do perfil.
+export function iniciais(nome: string): string {
+  const partes = nome.trim().split(/\s+/);
+  const primeira = partes[0]?.[0] ?? "";
+  const ultima = partes.length > 1 ? partes[partes.length - 1][0] : "";
+  return (primeira + ultima).toUpperCase();
+}

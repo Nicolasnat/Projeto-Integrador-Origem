@@ -14,7 +14,7 @@ import { categorias, regioes, tecnicas } from "./catalogo";
 import { produtos, type ProdutoMock } from "./produtos";
 
 export { categorias, regioes, tecnicas };
-export { usuarios, SENHA_DEMO } from "./usuarios";
+export { usuarios, SENHA_DEMO, CODIGO_CONVITE_ADMIN } from "./usuarios";
 
 function achar<T extends { id: string }>(lista: T[], id: string): T {
   const item = lista.find((i) => i.id === id);

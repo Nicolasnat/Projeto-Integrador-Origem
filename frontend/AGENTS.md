@@ -150,6 +150,7 @@ O contrato ainda não tem, e a Avaliação 1 pede:
 - `GET /comprador/avaliacoes`; `compraVerificada` e `respostaArtesao` na avaliação; `dimensoes` e `material` no detalhe da peça.
 - `POST /suporte/tickets/{id}/mensagens` (mensagens do chat, classificação e sugestões da triagem); `prioridade` no ticket.
 - `POST /produtos/{id}/personalizacoes` (solicitação ao artesão) e histórico de peças vistas.
+- `codigoConvite` em `POST /auth/register` para administrador (sem ele, 403).
 - `tecnica` e `regiao` em `POST /auth/register` para artesão. O Figma também pede CPF/CNPJ e localização: o front ainda não coleta, porque o contrato não recebe.
 
 Os campos marcados com "lacuna" em `src/types/index.ts` são exatamente estes.

@@ -146,6 +146,8 @@ export type DadosCadastro = {
   // lacunas: o Figma pede técnica e região no cadastro de artesão
   tecnica?: string;
   regiao?: string;
+  // lacuna: administrador só se cadastra com o código de convite da equipe
+  codigoConvite?: string;
 };
 
 export type DadosLogin = {

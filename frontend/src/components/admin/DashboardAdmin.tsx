@@ -1,13 +1,15 @@
 "use client";
 
-import { Bell, CheckCircle2, CircleAlert, LayoutDashboard, Users } from "lucide-react";
+import { Bell, CheckCircle2, CircleAlert, LayoutDashboard, LogOut, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { EstadoErro } from "@/components/ui/EstadoErro";
 import { EstadoVazio } from "@/components/ui/EstadoVazio";
 import { Esqueleto } from "@/components/ui/Esqueleto";
 import { useMetricasAdmin } from "@/hooks/useMetricasAdmin";
-import { formatarInteiro, formatarMoeda } from "@/lib/formato";
+import { useSessao } from "@/hooks/useSessao";
+import { formatarInteiro, formatarMoeda, iniciais } from "@/lib/formato";
 
 const atalhos = [
   { nome: "Visão geral", href: "#visao-geral" },
@@ -26,6 +28,15 @@ const cartoes = [
 ] as const;
 
 function CabecalhoAdmin() {
+  const router = useRouter();
+  const { usuario, sair } = useSessao();
+  const nome = usuario?.nome ?? "";
+
+  async function sairDoPainel() {
+    await sair();
+    router.replace("/entrar");
+  }
+
   return (
     <header className="border-b border-borda bg-superficie">
       <div className="mx-auto flex min-h-19 w-full max-w-pagina flex-wrap items-center justify-between gap-3 px-margem py-3 lg:flex-nowrap">
@@ -47,8 +58,13 @@ function CabecalhoAdmin() {
           <Link href="#moderacao" className="inline-flex size-10 items-center justify-center rounded-raio text-tinta hover:bg-superficie-2" aria-label="Ver alertas de moderação">
             <Bell className="size-5" aria-hidden="true" />
           </Link>
-          <span className="inline-flex size-9 items-center justify-center rounded-full bg-terracota text-apoio font-bold text-white" aria-label="Administrador">AD</span>
-          <span className="hidden text-apoio font-semibold text-tinta sm:inline">Admin RIGEM</span>
+          <span className="inline-flex size-9 items-center justify-center rounded-full bg-terracota text-apoio font-bold text-white" aria-hidden="true">{iniciais(nome)}</span>
+          <span className="hidden text-apoio font-semibold text-tinta sm:inline">{nome}</span>
+          <button type="button" onClick={() => void sairDoPainel()} className="inline-flex min-h-10 items-center gap-2 rounded-raio px-3 text-apoio font-medium text-tinta transition-colors duration-150 hover:bg-superficie-2">
+            <LogOut className="size-5" aria-hidden="true" />
+            <span className="hidden sm:inline">Sair</span>
+            <span className="sr-only sm:hidden">Sair da conta de {nome}</span>
+          </button>
         </div>
       </div>
     </header>
@@ -74,7 +90,7 @@ export default function DashboardAdmin() {
   return (
     <div className="flex min-h-dvh flex-1 flex-col bg-fundo">
       <CabecalhoAdmin />
-      <main id="conteudo-admin" className="mx-auto flex w-full max-w-pagina flex-1 flex-col gap-4 px-margem py-6">
+      <div id="conteudo-admin" className="mx-auto flex w-full max-w-pagina flex-1 flex-col gap-4 px-margem py-6">
         {consulta.carregando && <Carregando />}
         {consulta.erro && <EstadoErro mensagem={consulta.erro.message} aoTentarDeNovo={consulta.recarregar} />}
         {dados && dados.atividadesRecentes.length === 0 && dados.vendasPorRegiao.length === 0 && (
@@ -83,10 +99,7 @@ export default function DashboardAdmin() {
         {dados && (dados.atividadesRecentes.length > 0 || dados.vendasPorRegiao.length > 0) && (
           <>
             <section id="visao-geral" aria-labelledby="admin-titulo" className="flex flex-col gap-4">
-              <div>
-                <p className="mb-1 inline-flex items-center rounded-full bg-superficie-2 px-3 py-1 text-legenda font-semibold text-terracota">Administração Origem</p>
-                <h1 id="admin-titulo" className="font-titulo text-h1 font-bold text-tinta">O pulso do marketplace, em um só lugar.</h1>
-              </div>
+              <h1 id="admin-titulo" className="font-titulo text-h1 font-bold text-tinta">O pulso do marketplace, em um só lugar.</h1>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
                 {cartoes.map((cartao) => {
                   const valor = cartao.valor === "vendas" ? formatarMoeda(dados.totalVendas) : cartao.valor === "artesaos" ? formatarInteiro(dados.totalArtesaosAtivos) : cartao.valor === "produtos" ? formatarInteiro(dados.totalProdutos) : cartao.valor === "tickets" ? formatarInteiro(dados.ticketsSuporte) : formatarInteiro(dados.validacoesPendentes);
@@ -149,7 +162,7 @@ export default function DashboardAdmin() {
             </section>
           </>
         )}
-      </main>
+      </div>
       <footer className="h-16 shrink-0 bg-tinta" aria-label="Rodapé administrativo" />
     </div>
   );
