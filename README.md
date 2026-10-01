@@ -234,7 +234,11 @@ https://github.com/Samara020/Projeto-Integrador-Origem/tree/main/docs
 
 https://github.com/Samara020/Projeto-Integrador-Origem/tree/backend
 
-## screencast 
+## Deploy
+
+https://projeto-integrador-origem.vercel.app/
+
+## Screencast 
 
 https://youtu.be/3yaYGo2tlas
 
