@@ -42,3 +42,9 @@ jobs:
           curl -sf http://localhost:3001/readyz
           curl -sf http://localhost:3000/api/categorias > /dev/null
           docker compose down
+
+      - name: Mostrar logs se falhar
+        if: failure()
+        run: |
+          docker compose ps
+          docker compose logs postgres
